@@ -4,7 +4,7 @@
 # 使用
 1. 安装依赖 `npm install`
 2. 启动 `node index.js`
-3. 访问 http://127.0.0.1/users 和 http://127.0.0.1/user/lemon/info 即可看到 mock 数据
+3. 访问 http://127.0.0.1:3000/users 和 http://127.0.0.1:3000/user/lemon/info 即可看到 mock 数据
 
 # 说明
 1. 规则文件 mock_datas.json 与 mockjs 的语法基本一致，仅多了 $ 变量，$ 变量可以用来指向规则 url 中的参数
