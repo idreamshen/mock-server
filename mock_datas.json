@@ -1,0 +1,18 @@
+[
+  {
+    "url": "/users",
+    "response": {
+      "users|5-20": [{
+        "id": "@NAME",
+        "age|15-100": 1
+      }]
+    }
+  },
+  {
+    "url": "/user/:user_id/info",
+    "response": {
+      "id": "$user_id",
+      "age|15-100": 1
+    }
+  }
+]
