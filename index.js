@@ -12,7 +12,7 @@ app.set('json spaces', 4);
 mockDates.forEach(function (mockData) {
     app.get(mockData.url, function (req, res) {
 
-        modifyMockData(mockData.response, req); // 将 mockData.response 中的 $ 变量替换为 req 中对应的参数
+        replaceVariablesInMockData(mockData.response, req); // 将 mockData.response 中的 $ 变量替换为 req 中对应的参数
         var data = Mock.mock(mockData.response); // 生成 mock
         res.json(data); // 发送 mock
 
@@ -27,7 +27,7 @@ app.listen(3000); // 监听 3000 端口
  * @param json
  * @param req
  */
-function modifyMockData(json, req) {
+function replaceVariablesInMockData(json, req) {
 
     for (var key in json) {
         var value = json[key];
@@ -37,11 +37,11 @@ function modifyMockData(json, req) {
                 json[key] = req.params[value.substring(1)]
             }
         } else if (is.json(value)) {
-            modifyMockData(value, req);
+            replaceVariablesInMockData(value, req);
         } else if (is.array(value)) {
 
             value.forEach(function (e) {
-                modifyMockData(e, req);
+                replaceVariablesInMockData(e, req);
             });
 
         }
